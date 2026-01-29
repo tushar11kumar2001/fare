@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Journey Together 🚕💙</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        color: white;
+        margin: 40px 0;
+        animation: fadeInDown 1s ease-in;
+      }
+
+      .header h1 {
+        font-size: 2.8em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      .header p {
+        font-size: 1.3em;
+        opacity: 0.9;
+      }
+
+      /* Animated Journey Road */
+      .journey-animation {
+        background: white;
+        border-radius: 20px;
+        padding: 60px 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+      }
+
+      .road {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background: linear-gradient(
+          to bottom,
+          #87ceeb 0%,
+          #87ceeb 55%,
+          #7cb342 55%,
+          #7cb342 58%,
+          #555 58%,
+          #555 75%,
+          #7cb342 75%,
+          #7cb342 78%,
+          #90ee90 78%,
+          #90ee90 100%
+        );
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .road-line {
+        position: absolute;
+        width: 100%;
+        height: 6px;
+        background: repeating-linear-gradient(
+          to right,
+          #ffd700 0px,
+          #ffd700 40px,
+          transparent 40px,
+          transparent 80px
+        );
+        top: 66.5%;
+        transform: translateY(-50%);
+        animation: roadMove 2s linear infinite;
+        border-radius: 3px;
+      }
+
+      .building {
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        animation: buildingBounce 3s ease-in-out infinite;
+      }
+
+      .building-icon {
+        font-size: 5em;
+        filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+      }
+
+      .building-label {
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        margin-top: 10px;
+        font-size: 1.1em;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .metro {
+        position: absolute;
+        top: 15%;
+        right: 0%;
+        animation: metroGlow 2s ease-in-out infinite;
+      }
+
+      .metro-icon {
+        font-size: 5em;
+        filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+      }
+
+      .metro-label {
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        margin-top: 10px;
+        font-size: 1.1em;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .cab-container {
+        position: absolute;
+        top: 66.5%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        animation: cabJourney 8s ease-in-out forwards;
+        z-index: 10;
+      }
+
+      .friends-in-cab {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        top: -30%;
+        transform: translateX(-50%);
+        font-size: 2em;
+        white-space: nowrap;
+        animation: wave 1s ease-in-out infinite;
+        display: flex;
+        gap: 5px;
+      }
+
+      .passenger {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: passengerWave 1.2s ease-in-out infinite;
+      }
+
+      .passenger:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .passenger:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .passenger:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .passenger:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      .passenger-name {
+        font-size: 0.4em;
+        font-weight: bold;
+        color: #333;
+        background: white;
+        padding: 2px 6px;
+        border-radius: 8px;
+        margin-bottom: 3px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        order: -1;
+      }
+
+      .cab {
+        font-size: 6em;
+        filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
+        animation: cabBounce 0.5s ease-in-out infinite;
+        transform: scaleX(-1);
+      }
+      .collage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+      .friend-waiting {
+        position: absolute;
+        right: 0%;
+        top: 65%;
+        transform: translateY(-50%);
+        font-size: 3em;
+        animation: friendWave 1.5s ease-in-out infinite;
+        opacity: 0;
+        animation-delay: 6s;
+        animation-fill-mode: forwards;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .waiting-name {
+        font-size: 0.4em;
+        font-weight: bold;
+        color: #333;
+        background: white;
+        padding: 4px 10px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        order: -1;
+      }
+
+      /* Friends group at metro after cab arrives */
+      .friends-group {
+        position: absolute;
+        right: 12%;
+        top: 66.5%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 10px;
+        opacity: 0;
+        animation: friendsAppear 1s ease 7.5s forwards;
+        z-index: 15;
+      }
+
+      .friend-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 2.5em;
+        animation: friendJump 0.8s ease-in-out infinite;
+      }
+
+      .friend-item:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .friend-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .friend-item:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .friend-item:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .friend-item:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+
+      .friend-item-name {
+        font-size: 0.35em;
+        font-weight: bold;
+        color: #333;
+        background: white;
+        padding: 3px 8px;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        order: -1;
+      }
+
+      .clouds {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        font-size: 3em;
+        opacity: 0.7;
+      }
+
+      .cloud {
+        position: absolute;
+        animation: cloudFloat 15s linear infinite;
+      }
+
+      .cloud:nth-child(1) {
+        left: 0%;
+        animation-delay: 0s;
+      }
+
+      .cloud:nth-child(2) {
+        left: 40%;
+        animation-delay: 5s;
+      }
+
+      .cloud:nth-child(3) {
+        left: 70%;
+        animation-delay: 10s;
+      }
+
+      .trees {
+        position: absolute;
+        bottom: 32%;
+        width: 100%;
+        font-size: 2.5em;
+        opacity: 0.8;
+      }
+
+      .tree {
+        position: absolute;
+        animation: treePass 10s linear infinite;
+      }
+
+      .tree:nth-child(1) {
+        left: 20%;
+        animation-delay: 0s;
+      }
+      .tree:nth-child(2) {
+        left: 50%;
+        animation-delay: 3s;
+      }
+      .tree:nth-child(3) {
+        left: 80%;
+        animation-delay: 6s;
+      }
+
+      /* Story Cards */
+      .story-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+      }
+
+      .story-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: cardPop 0.6s ease forwards;
+      }
+
+      .story-card:nth-child(1) {
+        animation-delay: 1s;
+      }
+      .story-card:nth-child(2) {
+        animation-delay: 1.3s;
+      }
+      .story-card:nth-child(3) {
+        animation-delay: 1.6s;
+      }
+
+      .story-card-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+        animation: iconSpin 3s ease-in-out infinite;
+      }
+      .photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .story-card h3 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+
+      .story-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .memory-box {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 30px;
+        color: white;
+        text-align: center;
+        animation: fadeInUp 1s ease 2s backwards;
+        box-shadow: 0 15px 40px rgba(245, 87, 108, 0.4);
+      }
+
+      .memory-box h3 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .memory-box p {
+        font-size: 1.2em;
+        line-height: 1.8;
+      }
+
+      .hearts-floating {
+        text-align: center;
+        font-size: 2em;
+        margin: 30px 0;
+        position: relative;
+        height: 60px;
+      }
+
+      .heart {
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+        margin: 0 10px;
+      }
+
+      .heart:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .heart:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      .heart:nth-child(3) {
+        animation-delay: 1s;
+      }
+
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .photo-box {
+        aspect-ratio: 1;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3em;
+        border: 3px dashed rgba(255, 255, 255, 0.6);
+        transition: all 0.3s ease;
+        animation: photoPulse 2s ease-in-out infinite;
+      }
+
+      .photo-box:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .photo-box:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .photo-box:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .photo-box:hover {
+        transform: scale(1.1) rotate(5deg);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .message-finale {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        margin-top: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1s ease 3s backwards;
+      }
+
+      .message-finale h3 {
+        color: #667eea;
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 25px;
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      .message-content {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+        border-radius: 15px;
+        padding: 30px;
+        color: #333;
+        font-size: 1.2em;
+        line-height: 2;
+        text-align: center;
+        font-style: italic;
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .sparkles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+      }
+
+      .sparkle {
+        position: absolute;
+        font-size: 1.5em;
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      .sparkle:nth-child(1) {
+        left: 10%;
+        top: 20%;
+        animation-delay: 0s;
+      }
+      .sparkle:nth-child(2) {
+        left: 80%;
+        top: 30%;
+        animation-delay: 0.5s;
+      }
+      .sparkle:nth-child(3) {
+        left: 50%;
+        top: 60%;
+        animation-delay: 1s;
+      }
+      .sparkle:nth-child(4) {
+        left: 20%;
+        top: 80%;
+        animation-delay: 1.5s;
+      }
+      .sparkle:nth-child(5) {
+        left: 90%;
+        top: 70%;
+        animation-delay: 2s;
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+          text-shadow:
+            0 0 20px rgba(255, 255, 255, 0.8),
+            0 0 30px rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      @keyframes cabJourney {
+        0% {
+          left: 10%;
+          opacity: 1;
+        }
+        45% {
+          left: 50%;
+          opacity: 1;
+        }
+        50% {
+          left: 50%;
+          opacity: 1;
+        }
+        90% {
+          left: 85%;
+          opacity: 1;
+        }
+        95% {
+          left: 85%;
+          opacity: 0;
+        }
+        100% {
+          left: 85%;
+          opacity: 0;
+        }
+      }
+
+      @keyframes cabBounce {
+        0%,
+        100% {
+          transform: scaleX(-1) translateY(0);
+        }
+        50% {
+          transform: scaleX(-1) translateY(-10px);
+        }
+      }
+
+      @keyframes roadMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 80px 0;
+        }
+      }
+
+      @keyframes buildingBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes metroGlow {
+        0%,
+        100% {
+          filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+        }
+        50% {
+          filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8));
+        }
+      }
+
+      @keyframes wave {
+        0%,
+        100% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+        25% {
+          transform: translateX(-50%) rotate(-10deg);
+        }
+        75% {
+          transform: translateX(-50%) rotate(10deg);
+        }
+      }
+
+      @keyframes passengerWave {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-3px) rotate(-5deg);
+        }
+        75% {
+          transform: translateY(-3px) rotate(5deg);
+        }
+      }
+
+      @keyframes friendWave {
+        0%,
+        100% {
+          transform: translateY(-50%) rotate(0deg);
+          opacity: 1;
+        }
+        25% {
+          transform: translateY(-50%) rotate(-15deg);
+        }
+        75% {
+          transform: translateY(-50%) rotate(15deg);
+        }
+      }
+
+      @keyframes friendsAppear {
+        0% {
+          opacity: 0;
+          transform: translateY(-50%) scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(-50%) scale(1);
+        }
+      }
+
+      @keyframes friendJump {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes cloudFloat {
+        0% {
+          transform: translateX(-100px);
+        }
+        100% {
+          transform: translateX(100vw);
+        }
+      }
+
+      @keyframes treePass {
+        0% {
+          transform: translateX(0) scale(1);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-100vw) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      @keyframes cardPop {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes iconSpin {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        25% {
+          transform: rotate(-10deg) scale(1.1);
+        }
+        75% {
+          transform: rotate(10deg) scale(1.1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes photoPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          border-color: rgba(255, 255, 255, 0.6);
+        }
+        50% {
+          transform: scale(1.05);
+          border-color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.5) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1) rotate(180deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2em;
+        }
+
+        .journey-animation {
+          padding: 30px 20px;
+        }
+
+        .road {
+          height: 300px;
+        }
+
+        .building-icon,
+        .metro-icon {
+          font-size: 3em;
+        }
+
+        .cab {
+          font-size: 3em;
+        }
+
+        .story-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .photos-grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .friends-group {
+          gap: 5px;
+        }
+
+        .friend-item {
+          font-size: 2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Our Journey Together 🚕💙</h1>
+        <p>From colleagues to friends, one cab ride at a time</p>
+      </div>
+
+      <div class="journey-animation">
+        <div class="sparkles">
+          <div class="sparkle">✨</div>
+          <div class="sparkle">⭐</div>
+          <div class="sparkle">✨</div>
+          <div class="sparkle">⭐</div>
+          <div class="sparkle">✨</div>
+        </div>
+
+        <div class="road">
+          <div class="clouds">
+            <div class="cloud">☁️</div>
+            <div class="cloud">☁️</div>
+            <div class="cloud">☁️</div>
+          </div>
+
+          <div class="trees">
+            <div class="tree">🌳</div>
+            <div class="tree">🌳</div>
+            <div class="tree">🌳</div>
+          </div>
+
+          <div class="building">
+            <div class="building-label">Office</div>
+            <div class="building-icon">🏢</div>
+          </div>
+
+          <div class="metro">
+            <div class="metro-label">Huda</div>
+            <div class="metro-icon">🚇</div>
+          </div>
+
+          <div class="road-line"></div>
+
+          <div class="cab-container">
+            <div class="friends-in-cab">
+              <div class="passenger">
+                <span><img src="shreshth.jpeg" class="photo" alt="" /></span>
+                <span class="passenger-name">Shreshth</span>
+              </div>
+              <div class="passenger">
+                <span><img src="mansi.jpeg" class="photo" alt="" /></span>
+                <span class="passenger-name">Mansi</span>
+              </div>
+              <div class="passenger">
+                <span><img src="himani.jpeg" class="photo" alt="" /></span>
+                <span class="passenger-name">Himani</span>
+              </div>
+              <div class="passenger">
+                <span><img src="tushar.jpeg" class="photo" alt="" /></span>
+                <span class="passenger-name">Tushar</span>
+              </div>
+            </div>
+            <div class="cab">🚕</div>
+          </div>
+
+          <div class="friend-waiting">
+            <span><img src="zeeshan.jpeg" class="photo" alt="" /></span>
+            <span class="waiting-name">Zeeshan</span>
+          </div>
+
+          <!-- All friends together at metro after cab disappears -->
+          <div class="friends-group">
+            <div class="friend-item">
+              <span><img src="shreshth.jpeg" class="photo" alt="" /></span>
+              <span class="friend-item-name">Shreshth</span>
+            </div>
+            <div class="friend-item">
+              <span><img src="mansi.jpeg" class="photo" alt="" /></span>
+              <span class="friend-item-name">Mansi</span>
+            </div>
+            <div class="friend-item">
+              <span><img src="himani.jpeg" class="photo" alt="" /></span>
+              <span class="friend-item-name">Himani</span>
+            </div>
+            <div class="friend-item">
+              <span><img src="tushar.jpeg" class="photo" alt="" /></span>
+              <span class="friend-item-name">Tushar</span>
+            </div>
+            <div class="friend-item">
+              <!-- <span>🙋‍♂️</span> -->
+              <!-- <span class="friend-item-name">Zeeshan</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-cards">
+        <div class="story-card">
+          <div class="story-card-icon">☕</div>
+          <h3>Daily Routine</h3>
+          <p>
+            Every evening, the same question: "Bhai cab dekh le yr !!" And off we
+            went, leaving work behind and making memories.
+          </p>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-icon">🗣️</div>
+          <h3>Endless Talks</h3>
+          <p>
+           Mansi - "Yr himani mera momos oh sorry momo khane ka mn kr rha h"
+          </p>
+         <p>
+           Himani - "mn toh mera bhi kr rha sorry my bad craving ho rhi h guys"
+          </p>
+          <p>
+           Shreshth - "Are mujhe btao mai tumhe delhi k best momos khilaunga"
+          </p>
+          <p>
+           Tushar (From front seat) - "Yr tum log kitna khate ho bs khana khana khana"
+          </p>
+        </div>
+
+        <div class="story-card">
+          <div class="story-card-icon">🤝</div>
+          <h3>Five Musketeers</h3>
+          <p>
+            Our complete squad of five! From colleagues to best friends who made
+            every journey memorable and fun!
+          </p>
+        </div>
+      </div>
+
+      <div class="hearts-floating">
+        <span class="heart">💙</span>
+        <span class="heart">💜</span>
+        <span class="heart">💙</span>
+      </div>
+
+      <div class="memory-box">
+        <h3>Tomorrow Changes Everything... 🌟</h3>
+        <p>
+          Your last day with us here, but definitely not the last day of our
+          friendship. The cab rides might end, but our bond continues on a
+          different route.
+        </p>
+        <p style="margin-top: 20px">
+          Distance is just a number. Friendship is forever. We'll miss those
+          daily rides, but we'll carry these memories in our hearts.
+        </p>
+
+        <div class="photos-grid">
+          <div class="photo-box">
+            <img src="ht1.jpg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <video
+              src="heroine.mp4"
+              class="collage"
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+          <div class="photo-box">
+            <img src="ht2.jpg" alt="" class="collage" />
+          </div>
+
+          <div class="photo-box">
+            <video src="video3.mp4" class="collage" autoplay muted loop></video>
+          </div>
+          <div class="photo-box">
+            <img src="h7.jpeg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <video src="video2.mp4" class="collage" autoplay muted loop></video>
+          </div>
+          <div class="photo-box">
+            <img src="hm1.jpeg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <video src="video1.mp4" class="collage" autoplay muted loop></video>
+          </div>
+          <div class="photo-box">
+            <img src="hm2.jpeg" alt="" class="collage" />
+          </div>
+        </div>
+      </div>
+
+      <div class="message-finale">
+        <h3>From Your Cab-Ride Squad 💌</h3>
+        <div class="message-content">
+          "Some journeys end, but the best ones never really do. They just take
+          different routes."
+          <br /><br />
+          Thank you for every laugh in that cramped back seat. Thank you for
+          making the mundane commute the best part of our day. Thank you for
+          being more than a colleague – for being a friend.
+          <br /><br />
+          Our cab might not pick you up tomorrow, but you'll always have a seat
+          in our hearts. This isn't goodbye, it's just "see you later."
+          <br /><br />
+          Keep shining wherever you go! We're just a message away. 🌟
+          <br /><br />
+          <strong
+            >Forever your friends,<br />The Office-to-Metro Squad 🚕💙🚇 <br/>
+             (Shreshth, Mansi, Tushar)
+            </strong
+          >
+        </div>
+      </div>
+
+      <div class="memory-box">
+        <h3>Happy Faces... 🌟</h3>
+        <p>
+Keep your shine as bright as a star in the darkest night. Life will always have its ups and downs, moments where everything feels heavy and moments where everything feels light—but that’s what makes the journey real. Even in the toughest times, remember that your light never fades; it only learns new ways to shine.
+        </p>
+        <p style="margin-top: 20px">
+No matter where life takes you, stay strong, stay kind, and keep moving forward with the same warmth and smile that made our days brighter. Paths may change and distances may grow, but the love, memories, and impact you leave behind will always remain ✨💖
+        </p>
+
+        <div class="photos-grid">
+          <div class="photo-box">
+            <img src="h1.jpeg" alt="" class="collage" />
+          </div>
+
+          <div class="photo-box">
+            <img src="h2.jpeg" alt="" class="collage" />
+          </div>
+
+          <div class="photo-box">
+            <img src="h8.jpeg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <img src="happy4.jpeg" alt="" class="collage" />
+          </div>
+
+          <div class="photo-box">
+            <img src="happy2.jpg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <img src="a4.jpg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <img src="h6.jpeg" alt="" class="collage" />
+          </div>
+
+          <div class="photo-box">
+            <img src="h5.jpeg" alt="" class="collage" />
+          </div>
+          <div class="photo-box">
+            <img src="h4.jpeg" alt="" class="collage" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
